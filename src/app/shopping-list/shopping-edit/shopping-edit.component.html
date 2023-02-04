@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onAddIngredient()" #f="ngForm">
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <label for="name">Name</label>
+                    <input 
+                    type="text" 
+                    id="name" 
+                    name="name"
+                    ngModel
+                    class="form-control"
+                    required
+                    >
+                    <!-- <span 
+                    class="help-block" 
+                    *ngIf="f.value.name.invalid && f.value.name.touched">
+                    Please provide a item name
+                </span> -->
+                </div>
+
+                <div class="col-sm-2">
+                    <label for="amount">Amount</label>
+                    <input 
+                    type="number" 
+                    id="amount" 
+                    ngModel
+                    name="amount"
+                    class="form-control"
+                    required
+                    pattern="^[0-9]+[1-9]*$">
+                    <!-- <span 
+                    class="help-block" 
+                    *ngIf="f.value.amount.invalid && f.value.amount.touched">
+                    Please provide an amount
+                </span> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button 
+                        class="btn btn-success" 
+                        type="submit" 
+                        [disabled]= "f.invalid"
+                        > {{ editMode ? 'Update' : 'Add' }}
+                    </button>
+                    <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
+                    <button 
+                        class="btn btn-primary" 
+                        type="button" 
+                        (click)="f.reset()">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
